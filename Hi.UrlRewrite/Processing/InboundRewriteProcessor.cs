@@ -21,10 +21,10 @@ namespace Hi.UrlRewrite.Processing
 
             try
             {
+                var context = HttpContext.Current;
+                if (context == null || db == null) return;
 
-                if (args.Context == null || db == null) return;
-
-                var httpContext = new HttpContextWrapper(args.Context);
+                var httpContext = new HttpContextWrapper(context);
                 var requestUri = httpContext.Request.Url;
 
                 if (requestUri == null || Configuration.IgnoreUrlPrefixes.Length > 0 && Configuration.IgnoreUrlPrefixes.Any(prefix => requestUri.PathAndQuery.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase)))
