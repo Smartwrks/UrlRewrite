@@ -104,8 +104,9 @@ namespace Hi.UrlRewrite.Processing
 
         private OutboundRuleResult ProcessRegularExpressionOutboundRule(OutboundRuleResult ruleResult, OutboundRule outboundRule)
         {
-            Match outboundRuleMatch,
-                lastConditionMatch = null;
+            //Match outboundRuleMatch,
+            //    lastConditionMatch = null;
+            Match lastConditionMatch = null;
 
             // test rule match
             var isRuleMatch = true;

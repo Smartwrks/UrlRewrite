@@ -6,6 +6,7 @@ using Hi.UrlRewrite.Entities.Rules;
 using Hi.UrlRewrite.Processing.Results;
 using Sitecore.Data;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Sites;
 using System;
@@ -530,16 +531,18 @@ namespace Hi.UrlRewrite.Processing
                 {
                     if (rewriteItem.Paths.IsMediaItem)
                     {
-                        var mediaUrlOptions = new MediaUrlOptions
+                        //var mediaUrlOptions = new MediaUrlOptions
+                        var mediaUrlBuilderOptions = new MediaUrlBuilderOptions
                         {
                             AlwaysIncludeServerUrl = true
                         };
 
-                        rewriteUrl = MediaManager.GetMediaUrl(rewriteItem, mediaUrlOptions);
+                        rewriteUrl = MediaManager.GetMediaUrl(rewriteItem, mediaUrlBuilderOptions);
                     }
                     else
                     {
-                        var urlOptions = LinkManager.GetDefaultUrlOptions();
+                        //var urlOptions = LinkManager.GetDefaultUrlOptions();
+                        var urlOptions = LinkManager.GetDefaultUrlBuilderOptions();
                         urlOptions.AlwaysIncludeServerUrl = true;
                         urlOptions.SiteResolving = true;
 
