@@ -482,6 +482,12 @@ namespace Hi.UrlRewrite
                         case Constants.ConditionInputType_Https_ItemId:
                             conditionInputType = Tokens.HTTPS;
                             break;
+                        case Constants.ConditionInputType_URL_ItemId:
+                            conditionInputType = Tokens.URL;
+                            break;
+                        case Constants.ConditionInputType_RequestUri_ItemId:
+                            conditionInputType = Tokens.REQUEST_URI;
+                            break;
                         default:
                             break;
                     }

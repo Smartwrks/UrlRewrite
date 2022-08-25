@@ -82,7 +82,7 @@ namespace Hi.UrlRewrite.Processing
 
                         tokenReplacement = replacements.ResponseHeaders[tokenKey];
                     }
-                    else if (replacements.RequestHeaders != null && token.StartsWith(REQUEST))
+                    else if (replacements.RequestHeaders != null && token.StartsWith(REQUEST) && token != "REQUEST_URI")
                     {
                         var tokenKey = token.Remove(0, REQUEST.Length);
                         tokenKey = tokenKey.Replace("_", "-");
