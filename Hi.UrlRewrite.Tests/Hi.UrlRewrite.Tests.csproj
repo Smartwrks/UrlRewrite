@@ -37,15 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
+    <Reference Include="Moq, Version=4.2.1409.1722, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assemblies\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\packages\Sitecore.Kernel.10.2.0\lib\net48\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging">
-      <HintPath>..\Assemblies\Sitecore.Logging.dll</HintPath>
+      <HintPath>..\packages\Sitecore.Logging.10.2.0\lib\net48\Sitecore.Logging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
@@ -75,12 +74,6 @@
     <Compile Include="UrlRewriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hi.UrlRewrite\Hi.UrlRewrite.csproj">
-      <Project>{6af4a433-0d10-4b1f-8517-7a1f05ef5ab5}</Project>
-      <Name>Hi.UrlRewrite</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="OutboundRewriterTestData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OutboundRewriterTestData.Designer.cs</LastGenOutput>
@@ -88,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hi.UrlRewrite\Hi.UrlRewrite.csproj">
+      <Project>{6af4a433-0d10-4b1f-8517-7a1f05ef5ab5}</Project>
+      <Name>Hi.UrlRewrite</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
