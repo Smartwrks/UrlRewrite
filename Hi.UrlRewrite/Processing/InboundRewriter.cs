@@ -251,7 +251,7 @@ namespace Hi.UrlRewrite.Processing
             }
 
             // test site name restrictions
-            if (isInboundRuleMatch && !string.IsNullOrEmpty(inboundRule.SiteNameRestriction))
+            if (isInboundRuleMatch && !string.IsNullOrEmpty(inboundRule. SiteNameRestriction))
             {
                 isInboundRuleMatch = TestSiteNameRestriction(inboundRule);
             }

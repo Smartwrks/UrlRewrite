@@ -20,13 +20,14 @@ namespace Hi.UrlRewrite.Processing
         {
             try
             {
-                HttpContextBase httpContext = new HttpContextWrapper(HttpContext.Current);
+                HttpContextBase abstractContext = new System.Web.HttpContextWrapper(context);
                 var urlRewriteProcessor = new InboundRewriteProcessor();
-                var requestArgs = new HttpRequestArgs(httpContext, HttpRequestType.Begin);
+                HttpRequestArgs requestArgs = new HttpRequestArgs(abstractContext, HttpRequestType.Begin);
                 var requestUri = context.Request.Url;
 
                 var siteContext = SiteContextFactory.GetSiteContext(requestUri.Host, requestUri.AbsolutePath,
                     requestUri.Port);
+
 
                 if (siteContext != null)
                 {
