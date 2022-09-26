@@ -39,6 +39,7 @@ namespace Hi.UrlRewrite.Processing
 
         public ProcessInboundRulesResult ProcessRequestUrl(Uri requestUri, List<InboundRule> inboundRules)
         {
+            Log.Info(this, "Smartworks log - Entering InboundRewrite ProcessRequestUrl()");
             if (inboundRules == null)
             {
                 throw new ArgumentNullException("inboundRules");
@@ -65,6 +66,7 @@ namespace Hi.UrlRewrite.Processing
 
                 if (ruleResult.RuleMatched && ruleResult.StopProcessing)
                 {
+                    Log.Info(this, "Smartworks log - Matched inbound Rule: {0}", inboundRule.Name);
                     break;
                 }
             }
@@ -73,6 +75,9 @@ namespace Hi.UrlRewrite.Processing
             Log.Debug(this, "Processed originalUrl: {0} redirectedUrl: {1}", originalUri, ruleResult.RewrittenUri);
 
             var finalResult = new ProcessInboundRulesResult(originalUri, processedResults);
+
+            Log.Info(this, "Smartworks log - Final Result OriginalUri: {0}", finalResult.OriginalUri);
+            Log.Info(this, "Smartworks log - Final Result RewrittenUri: {0}", finalResult.RewrittenUri);
 
             return finalResult;
         }

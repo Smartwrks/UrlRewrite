@@ -14,6 +14,8 @@ namespace Hi.UrlRewrite.Processing
 
         public ProcessInboundRulesResult GetUrlResults(string url, Database database, NameValueCollection serverVariables = null)
         {
+            Log.Info(this, "Smartworks log - Entering InboundRulesHelper GetUrlResults()");
+
             var rewriter = new InboundRewriter();
 
             var rulesEngine = new RulesEngine(database);
@@ -39,6 +41,11 @@ namespace Hi.UrlRewrite.Processing
             {
                 rewriter.RequestServerVariables.Add("QUERY_STRING", requestUri.Query.Remove(0, 1));
             }
+
+            Log.Info(this, "Smartworks log - requestUri: {0}", requestUri);
+            Log.Info(this, "Smartworks log - inboundRules: {0}", inboundRules);
+            Log.Info(this, "Smartworks log - siteContext: {0}", siteContext.Name);
+            Log.Info(this, "Smartworks log - database: {0}", database.Name);
 
             var results = rewriter.ProcessRequestUrl(requestUri, inboundRules, siteContext, database);
 

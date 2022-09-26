@@ -37,6 +37,14 @@ namespace Hi.UrlRewrite
             }
         }
 
+        public static string LogFileNameSw
+        {
+            get
+            {
+                return Settings.GetSetting("Hi.SwUrlRewrite.LogFileName", @"$(dataFolder)/logs/SwUrlRewrite.log.{date}.txt");
+            }
+        }
+
         public static string LogFileLevel
         {
             get

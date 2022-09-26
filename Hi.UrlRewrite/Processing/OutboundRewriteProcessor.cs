@@ -16,6 +16,7 @@ namespace Hi.UrlRewrite.Processing
 
         public void Process(HttpContextBase httpContext)
         {
+            Log.Info(this, "Entering OutboundRewriteProcessor Process()");
             var requestUri = httpContext.Request.Url;
             if (requestUri == null) return;
 

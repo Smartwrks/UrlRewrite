@@ -21,22 +21,17 @@ namespace Hi.UrlRewrite.Processing
 
             try
             {
-                //var context = HttpContext.Current;
-                //if (context == null || db == null) return;
-
-                //var httpContext = new HttpContextWrapper(context);
-                //var requestUri = httpContext.Request.Url;
-
-                //Log.Warn(this, db, "httpContext.Request.Url: {0}", httpContext.Request.Url);
-                //Log.Warn(this, db, "httpContext.Request.Url.Host: {0}", httpContext.Request.Url.Host);
-                //Log.Warn(this, db, "httpContext.Request.Url.Authority: {0}", httpContext.Request.Url.Authority);
-                //Log.Warn(this, db, "HttpContext.Current.Request.Url: {0}", HttpContext.Current.Request.Url);
+                Log.Info(this, "Smartworks log - Entering InboundRewriteProcessor Process()");
 
                 if (args.HttpContext == null || db == null) return;
 
-                //var httpContext = new HttpContextWrapper(args.Context);
+                Log.Info(this, db, "Smartworks log - Current Context db: {0}.", db.Name);
+
                 var httpContext = args.HttpContext;
+                Log.Info(this, db, "Smartworks log - httpContext request url: {0}.", httpContext);
+
                 var requestUri = httpContext.Request.Url;
+                Log.Info(this, db, "Smartworks log - requestUri: {0}.", requestUri.PathAndQuery);
 
                 if (requestUri == null || Configuration.IgnoreUrlPrefixes.Length > 0 && Configuration.IgnoreUrlPrefixes.Any(prefix => requestUri.PathAndQuery.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase)))
                 {
@@ -51,11 +46,12 @@ namespace Hi.UrlRewrite.Processing
                 httpContext.Items["urlrewrite:db"] = db.Name;
                 httpContext.Items["urlrewrite:result"] = requestResult;
 
-                var urlRewriterItem = Sitecore.Context.Database.GetItem(new ID(Constants.UrlRewriter_ItemId));
+                Log.Info(this, db, "Smartworks log - ProcessedResults.Count: {0}.", requestResult.ProcessedResults.Count);
+                Log.Info(this, db, "Smartworks log - urlrewrite:db: {0}.", db.Name);
+                Log.Info(this, db, "Smartworks log - requestResult.RewrittenUri: {0}.", requestResult.RewrittenUri);
+                Log.Info(this, db, "Smartworks log - requestResult.OriginalUri: {0}.", requestResult.OriginalUri);
 
-                Log.Warn(this, db, "urlRewritterItem {0}.", urlRewriterItem.Name);
-                Log.Warn(this, db, "urlRewritterItem Uri ToString() {0}.", urlRewriterItem.Uri.ToString());
-                Log.Warn(this, db, "urlRewritterItem {0}.", httpContext.User.Identity.Name);
+                var urlRewriterItem = Sitecore.Context.Database.GetItem(new ID(Constants.UrlRewriter_ItemId));
 
                 if (urlRewriterItem != null)
                 {

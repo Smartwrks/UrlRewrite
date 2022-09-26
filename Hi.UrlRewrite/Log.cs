@@ -16,6 +16,7 @@ namespace Hi.UrlRewrite
         }
 
         private const string LogName = "UrlRewrite";
+        private const string SwLogName = "Smartworks.UrlRewrite";
         private const string LogNameDbFormat = LogName + "[{0}]";
         private const string Divider = "::";
 
@@ -89,6 +90,5 @@ namespace Hi.UrlRewrite
 
             return string.Format(LogNameDbFormat, database.Name) + Divider + string.Format(format, args);
         }
-
     }
 }
